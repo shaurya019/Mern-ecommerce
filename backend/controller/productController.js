@@ -28,6 +28,9 @@ exports.getAllProducts = catchAsyncError(async (req,res) =>{
 
 // Get Product Details
 exports.getProductDetails = catchAsyncError(async (req,res,next) => {
+   
+    req.body.user = req.user.id;
+
     let product = await Product.findById(req.params.id);
     
     if(!product){
